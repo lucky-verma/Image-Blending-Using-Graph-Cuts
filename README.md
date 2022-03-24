@@ -1,2 +1,5 @@
 # DAA-Project1-Spring22
-GraphCut Images
+
+MK97893, Lucky Verma
+hemanthg, Hemanth Gopal
+ZZ, Parth Bhodia
