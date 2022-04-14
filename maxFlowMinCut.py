@@ -103,7 +103,7 @@ class Graph:
             for j in range(self.COL):
                 if self.graph[i][j] == 0 and\
                 self.org_graph[i][j] > 0 and visited[i]:
-                    print str(i) + " - " + str(j)
+                    print(str(i) + " - " + str(j))
 
 
 # Create a graph given in the above diagram
