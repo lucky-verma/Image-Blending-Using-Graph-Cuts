@@ -1,8 +1,8 @@
 # DAA_Project_1_Spring22
 
->  `MK97893, Lucky Verma`
+>  **MK97893, Lucky Verma**
 
-## Installation [GitHub Pages](https://pages.github.com/)
+## Installation
 
 ```
 >>> pip install -r requirements.txt
