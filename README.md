@@ -5,12 +5,12 @@
 # Installation
 
 ```
->>> pip install -r reqs.txt
+>>> pip3 install -r reqs.txt
 ```
 
 # Usage
 
-There should be two images in the image directory: src.jpg and target.jpg. It is recommended that you resize your images to a low resolution, such as 640 x 480, so that the blending process takes as little time as possible. The test directory contains a few examples.
+There should be two images in the image directory: `src.jpg` and `target.jpg`. It is recommended that you resize your images to a low resolution, so that the blending process takes as little time as possible. The `test` directory contains a few examples.
 
 ## Step 1:
 
