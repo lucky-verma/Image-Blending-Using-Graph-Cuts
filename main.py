@@ -9,19 +9,6 @@ import argparse
 from matplotlib.pyplot import figure
 from numpy import save
 
-# image_dir = r"{}/test".format(os.getcwd())
-# src = cv2.imread(os.path.join(image_dir, 'src.jpg'))
-# sink = cv2.imread(os.path.join(image_dir, 'target.jpg'))
-# mask = cv2.imread(os.path.join(image_dir, 'mask.png'))
-
-parser = argparse.ArgumentParser()
-parser.add_argument('-d', dest='image_dir', required=True, help='Image directory')
-args = parser.parse_args()
-image_dir = args.image_dir
-src = cv2.imread(os.path.join(image_dir, 'src.jpg'))
-sink = cv2.imread(os.path.join(image_dir, 'target.jpg'))
-mask = cv2.imread(os.path.join(image_dir, 'mask.png'))
-
 
 def compute_edge_weights(src, sink):
     """
@@ -31,17 +18,12 @@ def compute_edge_weights(src, sink):
     """
     edge_weights = np.zeros((src.shape[0], src.shape[1], 2))
 
-    # Create shifted versions of the matrices for vectorized operations.
     src_left_shifted = np.roll(src, -1, axis=1)
     sink_left_shifted = np.roll(sink, -1, axis=1)
     src_up_shifted = np.roll(src, -1, axis=0)
     sink_up_shifted = np.roll(sink, -1, axis=0)
-
-    # Assign edge weights.
-    # For numerical stability, avoid divide by 0.
     eps = 1e-10
 
-    # Right neighbor.
     weight = np.sum(np.square(src - sink, dtype=np.float) +
                     np.square(src_left_shifted - sink_left_shifted, 
                     dtype=np.float),
@@ -52,7 +34,6 @@ def compute_edge_weights(src, sink):
                          axis=2)
     edge_weights[:, :, 0] = weight / (norm_factor + eps)
 
-    # Bottom neighbor.
     weight = np.sum(np.square(src - sink, dtype=np.float) +
                     np.square(src_up_shifted - sink_up_shifted,
                     dtype=np.float),
@@ -65,9 +46,17 @@ def compute_edge_weights(src, sink):
     
     return edge_weights
 
+
+# Args parser
+parser = argparse.ArgumentParser()
+parser.add_argument('-d', dest='image_dir', required=True, help='Image directory')
+args = parser.parse_args()
+image_dir = args.image_dir
+src = cv2.imread(os.path.join(image_dir, 'src.jpg'))
+sink = cv2.imread(os.path.join(image_dir, 'target.jpg'))
+mask = cv2.imread(os.path.join(image_dir, 'mask.png'))
+
 assert (src.shape == sink.shape), f"Source and sink dimensions must be the same: {str(src.shape)} != {str(sink.shape)}"
-
-
 
 # Create the graph
 graph = maxflow.Graph[float]()
@@ -97,6 +86,7 @@ for row_idx in range(patch_height):
             graph.add_tedge(node_ids[row_idx][col_idx], np.inf, 0)
 
 
+# Intermediary results
 
 #####
 # Part 2.a
@@ -144,11 +134,9 @@ src = cv2.imread(os.path.join(image_dir, 'src.jpg'))
 sink = cv2.imread(os.path.join(image_dir, 'target.jpg'))
 # Remove background using bitwise-and operation
 result = cv2.bitwise_and(src, src, mask=thresh)
-result[thresh==0] = [255,255,255] # Turn background white
-
+result[thresh==0] = [255,255,255]
 _, mask = cv2.threshold(gray, thresh=10, maxval=255, type=cv2.THRESH_BINARY)
 im_thresh_gray = cv2.bitwise_and(gray, mask)
-
 res = cv2.bitwise_and(src,src,mask = mask)
 cropped_src = cv2.cvtColor(res , cv2.COLOR_BGR2RGB)
 dst = cv2.addWeighted(sink, 1.0, cropped_src, 1.0, 0)
