@@ -2,45 +2,37 @@
 
 >  **MK97893, Lucky Verma**
 
-## Installation
+# Installation
 
 ```
->>> pip install -r requirements.txt
->>> python setup.py install 
+>>> pip install -r reqs.txt
 ```
 
-## Pymaxflow Usage
+# Usage
 
-The method `add_grid_nodes` adds multiple nodes and returns their indices in a convenient n-dimensional array with the given shape; `add_grid_edges` adds edges to the grid with a given neighborhood structure (4-connected by default); and `add_grid_tedges` sets the capacities of the terminal edges for multiple nodes.
-    
-```python
-import pymaxflow as mf
+There should be two images in the image directory: src.jpg and target.jpg. It is recommended that you resize your images to a low resolution, such as 640 x 480, so that the blending process takes as little time as possible. The test directory contains a few examples.
 
-# Create a grid of nodes
-nodes = mf.add_grid_nodes(shape=(10, 10))
+## Step 1:
 
-# Add edges to the grid
-mf.add_grid_edges(nodes, neighborhood=mf.neighborhoods.four_connected)
-
-# Set the capacities of the terminal edges
-mf.add_grid_tedges(nodes, capacities=[1, 1, 1, 1])
-
-# Set the demands of the nodes
-mf.set_demands(nodes, demands=[1, 1, 1, 1])
+Create mask of images using the following command:
+ 
+```
+>>> python3 mask.py -d {path to test images}
 ```
 
-## Usage
-- Testing images can be found in the `test` folder.
+### Step 2:
 
-``` python
-image_dir = r"{}/test".format(os.getcwd())
+Run graph cuts with the following command:
+
 ```
+>>> python3 main.py -d {path to test images}
+```
+
 
 ## TODO
 
-- [x] cut of the graph into subgraphs and merge them into one. :shipit:
 - [x] Get the segments of the nodes in the grid.
-- [ ] couple of intermediate outputs
-- [ ] Image showing clear overlapped region # Important
-- [x] Min cut over images # Important
+- [x] couple of intermediate outputs.
+- [x] Image showing clear overlapped region.
+- [x] Min cut over images.
 - [ ] Try **setuptools** to package the project.
