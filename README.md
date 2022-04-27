@@ -13,10 +13,21 @@ Use Version: python3.8
 ```
 >>> pip3 install -r reqs.txt
 ```
+# Project Description
+
+The code is based on Kwatra et alpaper's "Graphcut Textures: Image and Video Synthesis Using Graph Cuts." There is also a graphcut algorithm built here, which takes own photos and applies the algorithm to them.
 
 # Usage
 
 There should be two images in the image directory: `src.jpg` and `target.jpg`. It is recommended that you resize your images to a low resolution, so that the blending process takes as little time as possible. The `test` directory contains a few examples.
+
+> The resulting image will be saved in the same folder as the original.
+
+The first intermediate result is shown in the files `2.a.Adj_matrix.txt` and intermediate `2.a.png`, which contains an image of two overlapping patches and illustrates where the overlap is and where it is not. A text file holding your graph's adjacency matrix or list of adjacencies.
+
+The second intermediate result is represented by the files image `2.b.png` and `2.b.pixels.txt`, which contain an image that clearly colors the pixels of the identified cut (seam) and a text file containing a vector of pixel numbers that create cuts.
+
+Finally, there's result.png, which combines two images to create a new one.
 
 ## Step 1:
 
