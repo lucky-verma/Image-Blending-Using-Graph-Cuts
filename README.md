@@ -48,7 +48,7 @@ Run graph cuts with the following command:
 
 - **test:** Directory containing a folder of images
 - **mask.py:** Script that can be used to make mask for `src` & `sink` images
-- **main.py:** Placeholder directory to store input files containing integers
+- **main.py:** Script that runs the min-cut max-flow algorithm for image blending
 - **req.txt:** Contains modules that were used to build this project 
 - **resources:** Directory containing resource scripts and image data
 
