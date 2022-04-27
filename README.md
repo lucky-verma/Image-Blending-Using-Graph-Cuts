@@ -5,7 +5,7 @@
 # Installation
 
 ```
->>> pip install -r reqs.txt
+>>> pip3 install -r reqs.txt
 ```
 
 # Usage
