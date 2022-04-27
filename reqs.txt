@@ -1,0 +1,15 @@
+certifi
+cycler
+decorator
+kiwisolver
+matplotlib
+networkx
+numpy
+Pillow
+PyMaxflow
+pyparsing
+python-dateutil
+pytz
+six
+tornado
+wincertstore
