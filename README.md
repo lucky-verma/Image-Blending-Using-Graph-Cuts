@@ -1,6 +1,12 @@
-# DAA_Project_1_Spring22
+# Image blending using GraphCuts
 
 >  **MK97893, Lucky Verma**
+
+## Setup Environment
+
+Follow: [Download and install Python](https://www.python.org/downloads/release/python-380/)
+
+Use Version: python3.8
 
 # Installation
 
@@ -27,12 +33,23 @@ Run graph cuts with the following command:
 ```
 >>> python3 main.py -d {path to test images}
 ```
+# Project Directories
 
+- **test:** Directory containing a folder of images
+- **mask.py:** Script that can be used to make mask for `src` & `sink` images
+- **main.py:** Placeholder directory to store input files containing integers
+- **req.txt:** Contains modules that were used to build this project 
+- **resources:** Directory containing resource scripts and image data
 
-## TODO
+# Outputs
+![Screenshot_2](https://user-images.githubusercontent.com/63258138/165436798-f18f654c-0735-49d6-b844-8fe15bcd2ac3.png)
 
-- [x] Get the segments of the nodes in the grid.
-- [x] couple of intermediate outputs.
-- [x] Image showing clear overlapped region.
-- [x] Min cut over images.
-- [ ] Try **setuptools** to package the project.
+# References
+
+- http://cs.brown.edu/courses/csci1950-g/results/proj3/dkendall/
+- https://dl.acm.org/doi/abs/10.1016/j.imavis.2008.04.014
+- https://github.com/ErictheSam/Graphcut/blob/master/mincut.py
+- https://pmneila.github.io/PyMaxflow/maxflow.html
+- https://github.com/niranjantdesai/image-blending-graphcuts
+- https://stackoverflow.com/questions/9295026/matplotlib-plots-removing-axis-legends-and-white-spaces
+- https://stackoverflow.com/questions/44650888/resize-an-image-without-distortion-opencv
